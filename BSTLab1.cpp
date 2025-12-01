@@ -15,7 +15,7 @@ class Node {
 		// Write a constructor for the Node
 		// input: only an integer value for "key", no pointer arguments
 		// 		right and left pointers should be null
-		Node(int key = 0, Node* right = nullptr, Node* left = nullptr){
+		Node(int key = -1, Node* right = nullptr, Node* left = nullptr){
 		}
 
 };
@@ -28,21 +28,27 @@ Node* createTree() {
 	Node *root = nullptr;
 
 	// level 1 (children of root)
+	Node(0);
+	Node(21);
 
 	// level 2 (children of 0)
+	Node(-2);
+	Node(7); 
 
 	// level 2 (children of 21)
+	Node(18);
+	Node(99); 
 
 	// level 3 (children of -2)
-
+	
 	// level 3 (children of 7)
-
+	
 	// level 3 (children of 15)
-
+	
 	// level 3 (children of 99)
-
+	
 	// level 4 (children of 18)
-
+	
 	return root;
 }
 
