@@ -8,11 +8,15 @@ class Node {
 		// the Node should contain
 		// 	- an integer "key" that holds the value of the Node
 		// 	- a pointer to each child possible child node ("right" and "left")
-
+		int key; 
+		Node* right; 
+		Node* left; 
 
 		// Write a constructor for the Node
 		// input: only an integer value for "key", no pointer arguments
 		// 		right and left pointers should be null
+		Node(int key = 0, Node* right = nullptr, Node* left = nullptr){
+		}
 
 };
 
