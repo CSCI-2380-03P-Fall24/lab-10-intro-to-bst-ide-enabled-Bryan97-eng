@@ -28,25 +28,29 @@ Node* createTree() {
 	Node *root = nullptr;
 
 	// level 1 (children of root)
-	Node(0);
-	Node(21);
+	Node(0); // left 
+	Node(21); // right 
 
 	// level 2 (children of 0)
-	Node(-2);
-	Node(7); 
+	Node(-2); // left 
+	Node(7); // right 
 
 	// level 2 (children of 21)
 	Node(18);
 	Node(99); 
 
 	// level 3 (children of -2)
-	
+	Node(-1); 
+
 	// level 3 (children of 7)
-	
+	Node(6); 
+
 	// level 3 (children of 15)
-	
+	Node(13); 
+
 	// level 3 (children of 99)
-	
+	Node()
+
 	// level 4 (children of 18)
 	
 	return root;
