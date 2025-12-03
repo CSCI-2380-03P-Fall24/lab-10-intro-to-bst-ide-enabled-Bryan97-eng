@@ -8,6 +8,7 @@ class Node {
 		// the Node should contain
 		// 	- an integer "key" that holds the value of the Node
 		// 	- a pointer to each child possible child node ("right" and "left")
+		
 		int key; 
 		Node* right; 
 		Node* left; 
@@ -23,35 +24,37 @@ class Node {
 
 // Use this function to create a Binary Search Tree (BST) tree with the following values
 // {13, 0, 7, 6, 21, 15, -2, 12, 99, 18, 19, -1}
+
 Node* createTree() {
 	// root
-	Node *root = nullptr;
+	Node *root = new Node(13);
 
 	// level 1 (children of root)
-	Node(0); // left 
-	Node(21); // right 
+	root->left = new Node(0); // left 
+	root->right = new Node(21); // right 
 
 	// level 2 (children of 0)
-	Node(-2); // left 
-	Node(7); // right 
+	root->left->left = new Node(-2); // left 
+	root->left->right = new Node(7); // right 
 
 	// level 2 (children of 21)
-	Node(18);
-	Node(99); 
+	root->right->left = new Node(15); // left 
+	root->right->right = new Node(99); // right 
 
 	// level 3 (children of -2)
-	Node(-1); 
+	root->left->left->right = new Node(-1); // left 
 
 	// level 3 (children of 7)
-	Node(6); 
+	root->left->right->left = new Node(6); // left
 
 	// level 3 (children of 15)
-	Node(13); 
+	root->left->right->right = new Node(12); // left 
 
 	// level 3 (children of 99)
-	Node()
+	root->right->left->left = new Node(18); //left
 
 	// level 4 (children of 18)
+	root->right->left->left->right = new Node(19); // right 
 	
 	return root;
 }
@@ -61,12 +64,16 @@ Node* createTree() {
 			// pointer to root Node
 // 	returns: true or false depending on if the value is found
 // You should write this function recursively! What is the base case? What is the general case?
+
 bool searchTree(int target, Node* root) {
 	// Base cases
-	return false;
+
+	if(root == nullptr){return false;}
+	if(root->key == target){return true;}
+
 
 	// General case
-	return false;
+		return (searchTree(target, root->left) || searchTree(target, root->right));
 	
 }
 
@@ -88,9 +95,10 @@ int treeSize(Node* root) {
 // A leaf is a node with no children.
 int countLeaves(Node* root) {
 	// base case
-	return -1;
+	if(root == nullptr){return -1;};
 
 	// General case
+	return countLeaves(root->left)
 	return -1;
 }
 
