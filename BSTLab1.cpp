@@ -15,8 +15,8 @@ class Node {
 		// Write a constructor for the Node
 		// input: only an integer value for "key", no pointer arguments
 		// 		right and left pointers should be null
-		Node(int key = -1, Node* right = nullptr, Node* left = nullptr){
-		}
+
+		Node(int value) : key(value), right(nullptr), left(nullptr){}
 
 };
 
