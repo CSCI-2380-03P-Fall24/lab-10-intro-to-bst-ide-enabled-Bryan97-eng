@@ -81,32 +81,41 @@ bool searchTree(int target, Node* root) {
 // 	input: pointer to the root Node
 // 	returns: number of nodes currently in the tree
 // You should write this function recursively!
-int treeSize(Node* root) {
+int treeSize(Node* root){
 	// base case
-	return -1;
+	if(!root){return 0;}// same as saying root == nullptr. I also removed return -1 when empty since if one side is empty it sums the the node incorreclty, I would have to add an extra step. 
 
 	// General case
-	return -1;
-
+	return 1 + treeSize(root->left) + treeSize(root->right);// note to self: the 1 is the value that gets added at every recursion, the counter for how many nodes. 
 }
 
 
 // Return the number of leaf nodes in the tree.
 // A leaf is a node with no children.
 int countLeaves(Node* root) {
-	// base case
-	if(root == nullptr){return -1;};
+	// base cases
+	if(!root){return 0;};
+	if(root->left == nullptr && root->right == nullptr){return 1;} // checks if the node has any children both left and right at the beginning of each recursion
 
 	// General case
-	return countLeaves(root->left)
-	return -1;
+	return countLeaves(root->left) + countLeaves(root->right); // checks both left and right side of tree to find the base condition 2 and sums them 
 }
 
 // BONUS! Write a function that will determine the height of the tree
 int treeHeight(Node* root) {
 	// base case
-	return -1;
+	if(!root){return 0;}
+	
+	if(root->left || root->right){return 1;}
+	int left_side = treeHeight(root->left);
+	int right_side = treeHeight(root->right);
 
 	// General case
-	return -1;
+	if(left_side > right_side){
+		return left_side; 
+	} else {
+		return right_side; 
+
+	}
+	
 }
