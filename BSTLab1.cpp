@@ -46,15 +46,15 @@ Node* createTree() {
 
 	// level 3 (children of 7)
 	root->left->right->left = new Node(6); // left
-
+	root->left->right->right = new Node(12); // right
 	// level 3 (children of 15)
-	root->left->right->right = new Node(12); // left 
+	
 
 	// level 3 (children of 99)
-	root->right->left->left = new Node(18); //left
+	root->right->right->left = new Node(18); //left
 
 	// level 4 (children of 18)
-	root->right->left->left->right = new Node(19); // right 
+	root->right->right->left->right = new Node(19); // right 
 	
 	return root;
 }
@@ -94,27 +94,28 @@ int treeSize(Node* root){
 // A leaf is a node with no children.
 int countLeaves(Node* root) {
 	// base cases
-	if(!root){return 0;};
-	if(root->left == nullptr && root->right == nullptr){return 1;} // checks if the node has any children both left and right at the beginning of each recursion
+	if(root == nullptr){return 0;};
+	if(root->left == nullptr && root->right == nullptr){
+		cout << root->key << " ";
+		return 1;} // checks if the node has any children both left and right at the beginning of each recursion
 
 	// General case
 	return countLeaves(root->left) + countLeaves(root->right); // checks both left and right side of tree to find the base condition 2 and sums them 
 }
 
 // BONUS! Write a function that will determine the height of the tree
-int treeHeight(Node* root) {
+int treeHeight(Node* root) { 
 	// base case
-	if(!root){return 0;}
+	if(root == nullptr){return -1;} //root == nullptr, was not sure if height is determined by node or edge height 
 	
-	if(root->left || root->right){return 1;}
 	int left_side = treeHeight(root->left);
 	int right_side = treeHeight(root->right);
 
 	// General case
 	if(left_side > right_side){
-		return left_side; 
+		return left_side+1; 
 	} else {
-		return right_side; 
+		return right_side+1; 
 
 	}
 	
