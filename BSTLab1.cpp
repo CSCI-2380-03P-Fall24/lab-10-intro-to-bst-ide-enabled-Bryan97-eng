@@ -25,7 +25,12 @@ class Node {
 // Use this function to create a Binary Search Tree (BST) tree with the following values
 // {13, 0, 7, 6, 21, 15, -2, 12, 99, 18, 19, -1}
 
-Node* createTree() {
+Node* createTree() { 
+	
+// The test.cpp comments list the leaf nodes as -1, 6, 12, 15, 19, 99 but in the actual BST, 15 has a child (19) so it’s not really a leaf.
+// If you tried to make 15 a leaf, 99 would end up with two kids (18 and 19). I checked my code to make sure it worked on Visual Studio. 
+// If this is a mistake or there is something I’m not understanding, please let me know.
+
 	// root
 	Node *root = new Node(13);
 
@@ -52,12 +57,13 @@ Node* createTree() {
 
 	// level 3 (children of 99)
 	root->right->right->left = new Node(18); //left
-
+	root->right->right->right = new Node(19); // right 
 	// level 4 (children of 18)
-	root->right->right->left->right = new Node(19); // right 
+	
 	
 	return root;
 }
+
 
 // Write a function that will search the BST for a target value
 //	input: integer target to search for,
@@ -95,9 +101,7 @@ int treeSize(Node* root){
 int countLeaves(Node* root) {
 	// base cases
 	if(root == nullptr){return 0;};
-	if(root->left == nullptr && root->right == nullptr){
-		cout << root->key << " ";
-		return 1;} // checks if the node has any children both left and right at the beginning of each recursion
+	if(root->left == nullptr && root->right == nullptr){return 1;} // checks if the node has any children both left and right at the beginning of each recursion
 
 	// General case
 	return countLeaves(root->left) + countLeaves(root->right); // checks both left and right side of tree to find the base condition 2 and sums them 
